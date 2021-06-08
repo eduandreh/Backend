@@ -27,15 +27,54 @@ module.exports = {
 			.catch(error => res.status(400).send(error))
 	},
 
+	// JSON: {
+    //     "email":"pedro@gmail.com",
+    //     "fullname": "Pedro Lopez",
+    //     "password": "1234"
+	// 	}
+
+	edit(req, res) {
+		return usuarios
+	          .update(  
+
+				 {  email: req.body.email,
+					fullname: req.body.fullname,
+			        password: req.body.password},
+
+		       {
+				where: {id: req.body.id}
+				}
+			
+		)
+			  .then(usuarios => res.status(200).send(usuarios))
+			  .catch(error => res.status(400).send(error))
+		},
+
+
+// /**
+// 	 * Eliminar un usuarios
+// 	 * 
+// 	 * @param {*} req 
+// 	 * @param {*} res 
+// 	 */
+//  delete(req, res) {
+// 	return usuarios
+// 		  .destroy(  
+
+// 		   {
+// 			where: {id: req.body.id}
+// 			}
+		
+// 	)
+// 		  .then(usuarios => res.status(200).send("usuario eliminado"))
+// 		  .catch(error => res.status(400).send(error))
+// 	},
+
 	/**
 	 * Find all users
 	 * 
 	 * Example: SELECT * FROM usuarios
-	 * JSON: {
-        "email":"pedro@gmail.com",
-        "fullname": "Pedro Lopez",
-        "password": "1234"
-		}
+	 * 
 	 * 
 	 * @param {*} _ 
 	 * @param {*} res 

@@ -44,6 +44,43 @@ module.exports = {
 //     "telefono":"387446593"
 // }
 
+edit(req, res) {
+	return cliente
+		  .update(  
+
+			 {  titulo: req.body.titulo,
+				 tag: req.body.tag,
+				precio: req.body.precio},
+
+		   {
+			where: {id: req.body.id}
+			}
+		
+	)
+		  .then(producto => res.status(200).send(producto))
+		  .catch(error => res.status(400).send(error))
+	},
+
+
+// /**
+//  * Eliminar un producto
+//  * 
+//  * @param {*} req 
+//  * @param {*} res 
+//  */
+// // delete(req, res) {
+// // return cliente
+// // 	  .destroy(  
+
+// // 	   {
+// // 		where: {id: req.body.id}
+// // 		}
+	
+// // )
+// // 	  .then(cliente => res.status(200).send("Cliente eliminado"))
+// // 	  .catch(error => res.status(400).send(error))
+// // },
+
 	/**
 	 * List
 	 * 

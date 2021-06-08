@@ -13,17 +13,23 @@ module.exports = (app) => {
 	// Routes of Web Services
 	// Users
 	app.post('/api/usuarios/create', usuariosController.create);
+	app.post('/api/usuarios/edit', usuariosController.edit);
+	// app.post('/api/usuarios/delete', usuariosController.delete);
 	app.get('/api/usuarios/list', usuariosController.list);
 	app.get('/api/usuarios/find/username/:username', usuariosController.find);
 
 	//clientes
 
 	app.post('/api/cliente/create', clienteController.create);
+	app.post('/api/cliente/edit', clienteController.edit);
+	//  app.post('/api/cliente/delete', clienteController.delete);
     app.get('/api/cliente/list', clienteController.list);
 
-	//clientes
+	//productos
 
 	app.post('/api/producto/create', productoController.create);
+	app.post('/api/producto/edit', productoController.edit);
+	app.post('/api/producto/delete', productoController.delete);
     app.get('/api/producto/list', productoController.list);
 	app.get('/api/producto/find', productoController.find);
 
