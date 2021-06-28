@@ -4,6 +4,42 @@ const usuarios = require('../models').usuarios;
 module.exports = {
 
 	/**
+	 * Login
+	 * 
+	 *
+	 * 
+	 * @param {*} req 
+	 * @param {*} res 
+	 */
+	login(req, res) {
+		return usuarios
+				.findOne({
+					where: {
+						email: req.body.email,
+						password: req.body.password,
+					}
+            })
+			 
+			.then(usuarios => {if (usuarios.length) {
+
+				return res.status(404).send(error); }
+
+				else { return res.status(200).json({usuarios, status: 200}) }
+			  })
+			
+			  .catch(error => res.status(400).json({status: 400, message: "error"}))
+
+			
+	},
+
+	// JSON: {
+    //     "email":"pedro@gmail.com",
+    //     "fullname": "Pedro Lopez",
+    //     "password": "1234"
+	// 	}
+
+
+	/**
 	 * Create a new user validate before if not exists
 	 * 
 	 *
@@ -11,7 +47,7 @@ module.exports = {
 	 * @param {*} req 
 	 * @param {*} res 
 	 */
-	create(req, res) {
+	 create(req, res) {
 		return usuarios
 			.findOrCreate({
 				where: {
@@ -25,13 +61,9 @@ module.exports = {
 			})
 			.then(usuarios => res.status(200).send(usuarios))
 			.catch(error => res.status(400).send(error))
+			
+			
 	},
-
-	// JSON: {
-    //     "email":"pedro@gmail.com",
-    //     "fullname": "Pedro Lopez",
-    //     "password": "1234"
-	// 	}
 
 	edit(req, res) {
 		return usuarios
@@ -43,11 +75,12 @@ module.exports = {
 
 		       {
 				where: {id: req.body.id}
-				}
-			
+				},
+				console.log(res)
 		)
 			  .then(usuarios => res.status(200).send(usuarios))
 			  .catch(error => res.status(400).send(error))
+			  
 		},
 
 

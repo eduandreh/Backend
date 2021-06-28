@@ -26,19 +26,29 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER
 		},  
 
-    cliente_fullname: {
-			allowNull: false,
-			type: DataTypes.STRING
-		},
+    // cliente_fullname: {
+		// 	allowNull: false,
+		// 	type: DataTypes.STRING
+		// },
     
-    fecha: {
-			allowNull: false,
-			type: DataTypes.DATE,
-      //defaultValue: sequelize.literal("(now() at time zone 'utc')")
-		},
+    // fecha: {
+		// 	allowNull: false,
+		// 	type: DataTypes.DATE,
+    //   //defaultValue: sequelize.literal("(now() at time zone 'utc')")
+		// },
     status: {
 			allowNull: false,
 			type: DataTypes.CHAR
+		},
+
+    lista_productos: {
+			allowNull: false,
+			type: DataTypes.ARRAY(DataTypes.DECIMAL)
+		},
+
+    cantidades: {
+			allowNull: false,
+			type: DataTypes.ARRAY(DataTypes.DECIMAL)
 		}
     
    

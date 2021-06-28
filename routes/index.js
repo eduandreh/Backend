@@ -2,7 +2,7 @@
 const usuariosController = require('../controllers/usuarios');
 const clienteController = require('../controllers/cliente');
 const productoController = require('../controllers/producto');
-//const ordenController = require('../controllers/orden');
+const ordenController = require('../controllers/orden');
 
 module.exports = (app) => {
 
@@ -12,6 +12,7 @@ module.exports = (app) => {
 
 	// Routes of Web Services
 	// Users
+	app.post('/api/usuarios/login', usuariosController.login);
 	app.post('/api/usuarios/create', usuariosController.create);
 	app.post('/api/usuarios/edit', usuariosController.edit);
 	// app.post('/api/usuarios/delete', usuariosController.delete);
@@ -35,6 +36,6 @@ module.exports = (app) => {
 
 	//Ordenes
 
-	//app.post('/api/orden/create', ordenController.create);
+	app.post('/api/orden/create', ordenController.create);
     //app.get('/api/orden/list', ordenController.list);
 };
