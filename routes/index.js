@@ -3,6 +3,7 @@ const usuariosController = require('../controllers/usuarios');
 const clienteController = require('../controllers/cliente');
 const productoController = require('../controllers/producto');
 const ordenController = require('../controllers/orden');
+const Authorization = require('../auth/authorization');
 
 module.exports = (app) => {
 
@@ -16,7 +17,7 @@ module.exports = (app) => {
 	app.post('/api/usuarios/create', usuariosController.create);
 	app.post('/api/usuarios/edit', usuariosController.edit);
 	// app.post('/api/usuarios/delete', usuariosController.delete);
-	app.get('/api/usuarios/list', usuariosController.list);
+	app.get('/api/usuarios/list',Authorization, usuariosController.list);
 	app.get('/api/usuarios/find/username/:username', usuariosController.find);
 
 	//clientes

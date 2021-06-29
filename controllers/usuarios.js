@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const usuarios = require('../models').usuarios;
+const jwt = require("jsonwebtoken");
 
 module.exports = {
 
@@ -11,24 +12,37 @@ module.exports = {
 	 * @param {*} req 
 	 * @param {*} res 
 	 */
-	login(req, res) {
-		return usuarios
-				.findOne({
-					where: {
-						email: req.body.email,
-						password: req.body.password,
-					}
-            })
-			 
-			.then(usuarios => {if (usuarios.length) {
+	async login(req, res) {
+		const { email, password } = req.body;
 
-				return res.status(404).send(error); }
+  const userWithEmail = await usuarios.findOne({ where: { email } }).catch(
+    (err) => {
+      console.log("Error: ", err);
+    }
+  );
 
-				else { return res.status(200).json({usuarios, status: 200}) }
-			  })
-			
-			  .catch(error => res.status(400).json({status: 400, message: "error"}))
+  if (!userWithEmail){
+    return res
+      .status(400)
+      .json({ message: "Emal or password does not match!" });
+  }
 
+  if (userWithEmail.password !== password){
+    return res
+      .status(404)
+      .json({ message: "Email or passwrd does not match!" });
+  }
+
+  if (userWithEmail.password === password){
+	const token = jwt.sign(
+		{email: userWithEmail.email },
+		'123456', {
+			expiresIn: 86400 // expires in 24 hours
+		});
+    return res
+	.status(200)
+	.json({ userWithEmail, message: "Bien!", token: token });	  
+  }
 			
 	},
 
