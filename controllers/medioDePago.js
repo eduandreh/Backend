@@ -7,11 +7,11 @@ module.exports = {
     create: function (req, res) {
         return medioDePago
             .create({
-                    "tarjeta": req.body.tarjeta,
-                    "numero": req.body.numero,
-                    "cvv": req.body.cvv,
-                    "expiry": req.body.expiry,
-                    "titular": req.body.titular,
+                    "tarjeta": req.body.ccbrand,
+                    "numero": req.body.ccnumber,
+                    "cvv": req.body.ccCVV,
+                    "expiry": req.body.ccexpiry,
+                    "titular": req.body.ccname,
                     "clienteId": req.body.clienteId
                 },
             )
@@ -23,11 +23,11 @@ module.exports = {
         return medioDePago
             .update(
                 {
-                    "tarjeta": req.body.tarjeta,
-                    "numero": req.body.numero,
-                    "cvv": req.body.cvv,
-                    "expiry": req.body.expiry,
-                    "titular": req.body.titular
+                    "tarjeta": req.body.ccbrand,
+                    "numero": req.body.ccnumber,
+                    "cvv": req.body.ccCVV,
+                    "expiry": req.body.ccexpiry,
+                    "titular": req.body.ccname,
                 },
                 {
                     where: {id: req.params.id}

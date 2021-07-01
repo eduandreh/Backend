@@ -7,11 +7,11 @@ module.exports = {
     create: function (req, res) {
         return domicilio
             .create({
-                    "nombre": req.body.nombre,
-                    "apellido": req.body.apellido,
-                    "direccion": req.body.direccion,
-                    "ciudad": req.body.ciudad,
-                    "provincia": req.body.provincia,
+                    "nombre": req.body.name,
+                    "apellido": req.body.surname,
+                    "direccion": req.body.address,
+                    "ciudad": req.body.city,
+                    "provincia": req.body.province,
                     "zipcode": req.body.zipcode,
                     "email": req.body.email,
                     "cellphone": req.body.cellphone,
@@ -26,11 +26,11 @@ module.exports = {
         return domicilio
             .update(
                 {
-                    "nombre": req.body.nombre,
-                    "apellido": req.body.apellido,
-                    "direccion": req.body.direccion,
-                    "ciudad": req.body.ciudad,
-                    "provincia": req.body.provincia,
+                    "nombre": req.body.name,
+                    "apellido": req.body.surname,
+                    "direccion": req.body.address,
+                    "ciudad": req.body.city,
+                    "provincia": req.body.province,
                     "zipcode": req.body.zipcode,
                     "email": req.body.email,
                     "cellphone": req.body.cellphone

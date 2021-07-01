@@ -13,7 +13,7 @@ module.exports = {
             return res.status(400).send("client does not exist")
         }
         clienteObj = clienteObj.get({plain: true});
-
+        console.log(req.body)
         let ordenObj = orden.build({
             status: req.body.status,
             clienteId: clienteObj.id
@@ -31,7 +31,7 @@ module.exports = {
 
                     await orden.addProducto(prodObj.id, {
                         through: {
-                            cantidad: reqProd.cantidad,
+                            cantidad: reqProd.quantity,
                             precio: prodObj.precio,
                             ordenNroOrden: ordenObj.nro_orden
                         },
