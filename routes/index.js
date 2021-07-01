@@ -3,6 +3,8 @@ const usuariosController = require('../controllers/usuarios');
 const clienteController = require('../controllers/cliente');
 const productoController = require('../controllers/producto');
 const ordenController = require('../controllers/orden');
+const medioDePagoController = require('../controllers/medioDePago');
+const domicilioController = require('../controllers/domicilio');
 const Authorization = require('../auth/authorization');
 
 module.exports = (app) => {
@@ -39,4 +41,18 @@ module.exports = (app) => {
 
 	app.post('/api/orden/create', ordenController.create);
     app.get('/api/orden/list', ordenController.list);
+
+    //mediosDePago
+	app.post('/api/mediodepago', medioDePagoController.create);
+	app.put('/api/mediodepago/:id', medioDePagoController.edit);
+	app.delete('/api/mediodepago/:id', medioDePagoController.delete);
+	app.get('/api/mediodepago/list', medioDePagoController.list);
+	app.get('/api/mediodepago/:id', medioDePagoController.find);
+
+	//domicilios
+	app.post('/api/domicilio', domicilioController.create);
+	app.put('/api/domicilio/:id', domicilioController.edit);
+	app.delete('/api/domicilio/:id', domicilioController.delete);
+	app.get('/api/domicilio/list', domicilioController.list);
+	app.get('/api/domicilio/:id', domicilioController.find);
 };

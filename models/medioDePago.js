@@ -7,11 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
         static associate(models) {
             // define association here
-            medioDePago.belongsTo(models.cliente,
-                {
-                    as: 'cliente'
-                }
-            );
+            medioDePago.belongsTo(models.cliente);
         }
     };
 
@@ -46,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'medioDePago',
+        paranoid: true,
     });
     return medioDePago;
 };

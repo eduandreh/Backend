@@ -14,9 +14,15 @@ module.exports = (sequelize, DataTypes) => {
             cliente.belongsTo(models.usuarios,
                 {
                     as: 'usuario',
-                    foreignKey: 'usuario_fullname'
+                    foreignKey: 'fullname'
                 }
             );
+            cliente.hasMany(models.domicilio,{
+                as: 'Domicilio'
+            });
+            cliente.hasMany(models.medioDePago,{
+                as: 'MedioDePago'
+            });
         }
     };
     cliente.init({

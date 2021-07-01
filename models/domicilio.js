@@ -7,11 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
         static associate(models) {
             // define association here
-            domicilio.belongsTo(models.cliente,
-                {
-                    as: 'cliente'
-                }
-            );
+            domicilio.belongsTo(models.cliente);
         }
     };
     domicilio.init({
