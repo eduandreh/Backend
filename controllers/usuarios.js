@@ -4,98 +4,99 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
 
-	/**
-	 * Login
-	 * 
-	 *
-	 * 
-	 * @param {*} req 
-	 * @param {*} res 
-	 */
-	async login(req, res) {
-		const { email, password } = req.body;
+    /**
+     * Login
+     *
+     *
+     *
+     * @param {*} req
+     * @param {*} res
+     */
+    async login(req, res) {
+        const {email, password} = req.body;
 
-  const userWithEmail = await usuarios.findOne({ where: { email } }).catch(
-    (err) => {
-      console.log("Error: ", err);
-    }
-  );
+        const userWithEmail = await usuarios.findOne({where: {email}}).catch(
+            (err) => {
+                console.log("Error: ", err);
+            }
+        );
 
-  if (!userWithEmail){
-    return res
-      .status(400)
-      .json({ message: "Emal or password does not match!" });
-  }
+        if (!userWithEmail) {
+            return res
+                .status(400)
+                .json({message: "Emal or password does not match!"});
+        }
 
-  if (userWithEmail.password !== password){
-    return res
-      .status(404)
-      .json({ message: "Email or passwrd does not match!" });
-  }
+        if (userWithEmail.password !== password) {
+            return res
+                .status(404)
+                .json({message: "Email or passwrd does not match!"});
+        }
 
-  if (userWithEmail.password === password){
-	const token = jwt.sign(
-		{email: userWithEmail.email },
-		'123456', {
-			expiresIn: 86400 // expires in 24 hours
-		});
-    return res
-	.status(200)
-	.json({ userWithEmail, message: "Bien!", token: token });	  
-  }
-			
-	},
+        if (userWithEmail.password === password) {
+            const token = jwt.sign(
+                {email: userWithEmail.email},
+                '123456', {
+                    expiresIn: 86400 // expires in 24 hours
+                });
+            return res
+                .status(200)
+                .json({userWithEmail, message: "Bien!", token: token});
+        }
 
-	// JSON: {
+    },
+
+    // JSON: {
     //     "email":"pedro@gmail.com",
     //     "fullname": "Pedro Lopez",
     //     "password": "1234"
-	// 	}
+    // 	}
 
 
-	/**
-	 * Create a new user validate before if not exists
-	 * 
-	 *
-	 * 
-	 * @param {*} req 
-	 * @param {*} res 
-	 */
-	 create(req, res) {
-		return usuarios
-			.findOrCreate({
-				where: {
-					email: req.body.email,
-				},
+    /**
+     * Create a new user validate before if not exists
+     *
+     *
+     *
+     * @param {*} req
+     * @param {*} res
+     */
+    create(req, res) {
+        return usuarios
+            .findOrCreate({
+                where: {
+                    email: req.body.email,
+                },
                 defaults: {
-				email: req.body.email,
-                fullname: req.body.fullname,
-				password: req.body.password
+                    email: req.body.email,
+                    fullname: req.body.fullname,
+                    password: req.body.password
                 }
-			})
-			.then(usuarios => res.status(200).send(usuarios))
-			.catch(error => res.status(400).send(error))
-			
-			
-	},
+            })
+            .then(usuarios => res.status(200).send(usuarios))
+            .catch(error => res.status(400).send(error))
 
-	edit(req, res) {
-		return usuarios
-	          .update(  
 
-				 {  email: req.body.email,
-					fullname: req.body.fullname,
-			        password: req.body.password},
+    },
 
-		       {
-				where: {id: req.body.id}
-				},
-				console.log(res)
-		)
-			  .then(usuarios => res.status(200).send(usuarios))
-			  .catch(error => res.status(400).send(error))
-			  
-		},
+    edit(req, res) {
+        return usuarios
+            .update(
+                {
+                    email: req.body.email,
+                    fullname: req.body.fullname,
+                    password: req.body.password
+                },
+
+                {
+                    where: {id: req.body.id}
+                },
+                console.log(res)
+            )
+            .then(usuarios => res.status(200).send(usuarios))
+            .catch(error => res.status(400).send(error))
+
+    },
 
 
 // /**
@@ -111,45 +112,45 @@ module.exports = {
 // 		   {
 // 			where: {id: req.body.id}
 // 			}
-		
+
 // 	)
 // 		  .then(usuarios => res.status(200).send("usuario eliminado"))
 // 		  .catch(error => res.status(400).send(error))
 // 	},
 
-	/**
-	 * Find all users
-	 * 
-	 * Example: SELECT * FROM usuarios
-	 * 
-	 * 
-	 * @param {*} _ 
-	 * @param {*} res 
-	 */
-	list(_, res) {
-		return usuarios
-			.findAll({})
-			.then(usuarios => res.status(200).send(usuarios))
-			.catch(error => res.status(400).send(error))
-	},
+    /**
+     * Find all users
+     *
+     * Example: SELECT * FROM usuarios
+     *
+     *
+     * @param {*} _
+     * @param {*} res
+     */
+    list(_, res) {
+        return usuarios
+            .findAll({})
+            .then(usuarios => res.status(200).send(usuarios))
+            .catch(error => res.status(400).send(error))
+    },
 
-	/**
-	 * Find one user in the table users
-	 * 
-	 * Example: SELECT * FROM usuarios WHERE username = 'Lucas'
-	 * 
-	 * @param {*} req 
-	 * @param {*} res 
-	 */
-	find(req, res) {
-		return usuarios
-			.findOne({
-				where: {
-					email: req.body.email
-				}
-			})
-			.then(usuarios => res.status(200).send(usuarios))
-			.catch(error => res.status(400).send(error))
-	}
+    /**
+     * Find one user in the table users
+     *
+     * Example: SELECT * FROM usuarios WHERE username = 'Lucas'
+     *
+     * @param {*} req
+     * @param {*} res
+     */
+    find(req, res) {
+        return usuarios
+            .findOne({
+                where: {
+                    email: req.body.email
+                }
+            })
+            .then(usuarios => res.status(200).send(usuarios))
+            .catch(error => res.status(400).send(error))
+    }
 }
 

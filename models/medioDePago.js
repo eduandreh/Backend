@@ -3,31 +3,37 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class orden extends Model {
+    class medioDePago extends Model {
+
         static associate(models) {
             // define association here
-            orden.belongsTo(models.cliente,
+            medioDePago.belongsTo(models.cliente,
                 {
                     as: 'cliente'
                 }
             );
         }
     };
-    orden.init({
-        nro_orden: {
-            allowNull: false,
-            primaryKey: true,
+    medioDePago.init({
+        id: {
             type: DataTypes.INTEGER,
+            primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         },
-        status: {
+        ubicacion: {
             allowNull: false,
-            type: DataTypes.CHAR(1)
-        }
+            type: DataTypes.STRING,
+        },
+        telefono: {
+            allowNull: false,
+            type: DataTypes.INTEGER
+        },
+
     }, {
         sequelize,
-        tableName: 'ordenes',
-        modelName: 'orden',
+        modelName: 'cliente',
     });
-    return orden;
+    return medioDePago;
 };
+

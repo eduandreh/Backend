@@ -13,16 +13,17 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
             cliente.belongsTo(models.usuarios,
                 {
-                    as: 'usuario',
-                    foreignKey: 'usuario_fullname'
+                    as: 'usuario'
                 }
             );
         }
     };
     cliente.init({
-        usuario_fullname: {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
             allowNull: false,
-            type: DataTypes.STRING
+            autoIncrement: true
         },
         ubicacion: {
             allowNull: false,
