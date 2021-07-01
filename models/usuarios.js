@@ -2,7 +2,7 @@
 const {
     Model
 } = require('sequelize');
-
+const usuarios = require('../controllers/usuarios');
 module.exports = (sequelize, DataTypes) => {
     class usuarios extends Model {
         /**
@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        fullname: {
+        fullname:{
             allowNull: false,
             type: DataTypes.STRING,
         },
-        email: {
+        email:{
             allowNull: false,
             type: DataTypes.STRING,
         },
@@ -44,4 +44,3 @@ module.exports = (sequelize, DataTypes) => {
     });
     return usuarios;
 };
-

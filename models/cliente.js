@@ -11,15 +11,18 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            cliente.belongsTo(models.usuarios);
+            cliente.belongsTo(models.usuarios,
+                {
+                    as: 'usuario',
+                    foreignKey: 'usuario_fullname'
+                }
+            );
         }
     };
     cliente.init({
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
+        usuario_fullname: {
             allowNull: false,
-            autoIncrement: true
+            type: DataTypes.STRING
         },
         ubicacion: {
             allowNull: false,
@@ -36,4 +39,3 @@ module.exports = (sequelize, DataTypes) => {
     });
     return cliente;
 };
-

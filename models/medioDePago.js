@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             );
         }
     };
+
     medioDePago.init({
         id: {
             type: DataTypes.INTEGER,
@@ -21,13 +22,25 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: true
         },
-        ubicacion: {
+        tarjeta: {
             allowNull: false,
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(15),
         },
-        telefono: {
+        numero: {
             allowNull: false,
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING(16),
+        },
+        cvv: {
+            allowNull: false,
+            type: DataTypes.STRING(3),
+        },
+        expiry: {
+            allowNull: false,
+            type: DataTypes.STRING(4),
+        },
+        titular: {
+            allowNull: false,
+            type: DataTypes.STRING(75),
         },
 
     }, {
