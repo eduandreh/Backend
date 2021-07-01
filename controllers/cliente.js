@@ -12,8 +12,6 @@ module.exports = {
      * @param {*} res
      */
     create(req, res) {
-        // Looking for the user
-        // SELECT * FROM usuarios WHERE id = 1 OR username = 'Lucas
         const responseUsuario = usuarios.findOne({
             where: {
                 [Op.or]: [{
@@ -38,12 +36,6 @@ module.exports = {
             })
     },
 
-    //Json: // {
-//     "user":"5",
-//     "ubicacion":"Salta, Argentina",
-//     "telefono":"387446593"
-// }
-
     edit(req, res) {
         return cliente
             .update(
@@ -60,26 +52,6 @@ module.exports = {
             .then(producto => res.status(200).send(producto))
             .catch(error => res.status(400).send(error))
     },
-
-
-// /**
-//  * Eliminar un producto
-//  * 
-//  * @param {*} req 
-//  * @param {*} res 
-//  */
-// // delete(req, res) {
-// // return cliente
-// // 	  .destroy(  
-
-// // 	   {
-// // 		where: {id: req.body.id}
-// // 		}
-
-// // )
-// // 	  .then(cliente => res.status(200).send("Cliente eliminado"))
-// // 	  .catch(error => res.status(400).send(error))
-// // },
 
     /**
      * List

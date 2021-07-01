@@ -30,7 +30,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         precio: {
             allowNull: false,
-            type: DataTypes.INTEGER
+            type: DataTypes.FLOAT
+        },
+        imageFileName: {
+            allowNull: false,
+            type: DataTypes.STRING(50)
         }
 
     }, {

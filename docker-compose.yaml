@@ -8,5 +8,5 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=prodcongeladosdb
-    volumes:
-      - ./prodcongeladosdb.sql:/docker-entrypoint-initdb.d/1.script.sql
+    #volumes:
+    # - ./prodcongeladosdb.sql:/docker-entrypoint-initdb.d/1.script.sql

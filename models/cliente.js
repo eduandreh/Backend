@@ -11,11 +11,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            cliente.belongsTo(models.usuarios,
-                {
-                    as: 'usuario'
-                }
-            );
+            cliente.belongsTo(models.usuarios);
         }
     };
     cliente.init({

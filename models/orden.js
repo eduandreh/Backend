@@ -6,11 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     class orden extends Model {
         static associate(models) {
             // define association here
-            orden.belongsTo(models.cliente,
-                {
-                    as: 'cliente'
-                }
-            );
+            orden.belongsTo(models.cliente);
         }
     };
     orden.init({
