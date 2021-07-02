@@ -42,21 +42,36 @@ module.exports = {
                 let domicilioObj = undefined;
                 let medioObj = undefined;
 
-                if(req.body.domicilio.domicilioId){
+                if (req.body.domicilio.domicilioId) {
                     domicilioObj = await domicilio.findByPk(req.body.domicilio.domicilioId)
                 }
-                if(!domicilioObj){
-                    domicilioObj = domicilio.build(req.body.domicilio);
+                if (!domicilioObj) {
+                    domicilioObj = domicilio.build({
+                        "nombre": req.body.domicilio.name,
+                        "apellido": req.body.domicilio.surname,
+                        "direccion": req.body.domicilio.address,
+                        "ciudad": req.body.domicilio.city,
+                        "provincia": req.body.domicilio.province,
+                        "zipcode": req.body.domicilio.zipcode,
+                        "email": req.body.domicilio.email,
+                        "cellphone": req.body.domicilio.cellphone
+                    });
                     await domicilioObj.save({transaction: t});
                     await domicilioObj.setCliente(clienteObj.id, {transaction: t});
 
                 }
 
-                if(req.body.medioDePago.medioDePagoId){
+                if (req.body.medioDePago.medioDePagoId) {
                     medioObj = await medioDePago.findByPk(req.body.medioDePago.medioDePagoId)
                 }
-                if(!medioObj){
-                    medioObj = medioDePago.build(req.body.medioDePago)
+                if (!medioObj) {
+                    medioObj = medioDePago.build({
+                        "tarjeta": "visa",
+                        "numero": req.body.medioDePago.ccnumber,
+                        "cvv": req.body.medioDePago.ccCVV,
+                        "expiry": req.body.medioDePago.ccexpiry,
+                        "titular": req.body.medioDePago.ccname
+                    })
                     await medioObj.save({transaction: t});
                     await medioObj.setCliente(clienteObj.id, {transaction: t});
 
