@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.FLOAT
         },
         imageFileName: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING(50)
         }
 

@@ -65,6 +65,7 @@ module.exports = {
 
                 attributes: [
 
+                    'id',
                     'usuario_fullname',
                     'ubicacion',
                     'telefono',
