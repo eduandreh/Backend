@@ -24,13 +24,13 @@ module.exports = {
         if (!userWithEmail) {
             return res
                 .status(400)
-                .json({message: "Emal or password does not match!"});
+                .json({message: "Email no encontrado en nuestra base de datos."});
         }
 
         if (userWithEmail.password !== password) {
             return res
                 .status(404)
-                .json({message: "Email or passwrd does not match!"});
+                .json({message: "Contraseña incorecta"});
         }
 
         if (userWithEmail.password === password) {
@@ -68,9 +68,11 @@ module.exports = {
                     email: req.body.email,
                 },
                 defaults: {
+                    
                     email: req.body.email,
                     fullname: req.body.fullname,
-                    password: req.body.password
+                    password: req.body.password,
+                    admin: req.body.admin
                 }
             })
             .then(usuarios => res.status(200).send(usuarios))

@@ -99,7 +99,20 @@ module.exports = {
             })
             .then(orden => res.status(200).send(orden))
             .catch(error => res.status(400).send(error))
-    }
+    },
+
+    delete(req, res) {
+        return orden
+              .destroy(  
+    
+               {
+                where: {nro_orden: req.body.nro_orden}
+                }
+            
+        )
+              .then(producto => res.status(200).send("Producto eliminado"))
+              .catch(error => res.status(400).send(error))
+        },
 
 
 }

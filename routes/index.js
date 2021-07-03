@@ -41,6 +41,7 @@ module.exports = (app) => {
 
 	app.post('/api/orden', ordenController.create);
     app.get('/api/orden', ordenController.list);
+	app.post('/api/orden/delete', ordenController.delete);
 
     //mediosDePago
 	app.post('/api/mediodepago', medioDePagoController.create);
