@@ -10,8 +10,12 @@
   "author": "Eduardo Andre",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.26.2",
     "express": "^4.17.1",
+    "formidable": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",

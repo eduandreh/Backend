@@ -2,6 +2,7 @@
 const usuariosController = require('../controllers/usuarios');
 const clienteController = require('../controllers/cliente');
 const productoController = require('../controllers/producto');
+const UploadController = require('../controllers/upload.controller');
 const ordenController = require('../controllers/orden');
 const medioDePagoController = require('../controllers/medioDePago');
 const domicilioController = require('../controllers/domicilio');
@@ -36,6 +37,8 @@ module.exports = (app) => {
 	app.post('/api/producto/delete', productoController.delete);
     app.get('/api/producto/list', productoController.list);
 	app.get('/api/producto/find', productoController.find);
+
+	app.post('/api/producto/uploadImg',UploadController.uploadFilesImgUser);
 
 	//Ordenes
 

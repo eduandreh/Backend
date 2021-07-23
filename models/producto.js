@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         imageFileName: {
             allowNull: true,
-            type: DataTypes.STRING(50)
+            type: DataTypes.STRING(5000)
         }
 
     }, {
