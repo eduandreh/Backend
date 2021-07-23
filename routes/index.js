@@ -29,6 +29,7 @@ module.exports = (app) => {
 	app.post('/api/cliente/edit', clienteController.edit);
 	//  app.post('/api/cliente/delete', clienteController.delete);
     app.get('/api/cliente/list', clienteController.list);
+	app.get('/api/cliente/:client_id/orders', clienteController.findOrders);
 
 	//productos
 

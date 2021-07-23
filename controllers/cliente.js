@@ -1,8 +1,14 @@
+
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+const orden = require('../models').orden;
+const producto = require('../models').producto;
 const cliente = require('../models').cliente;
+const domicilio = require('../models').domicilio;
+const medioDePago = require('../models').medioDePago;
 const usuarios = require('../models').usuarios;
+
 
 module.exports = {
     /**
@@ -75,6 +81,20 @@ module.exports = {
             })
             .then(cliente => res.status(200).send(cliente))
             .catch(error => res.status(400).send(error))
+    },
+
+    findOrders: function (req, res) {
+        let client_id = req.params.client_id
+        return orden
+            .findAll({
+                where: {
+                    '$cliente.usuario_fullname$': client_id
+                },
+                include: [producto, medioDePago, domicilio, cliente]
+            })
+            .then(cliente => res.status(200).send(cliente))
+            .catch(error => res.status(400).send(error))
+
     }
 
 }
