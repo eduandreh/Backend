@@ -137,3 +137,7 @@ CREATE TABLE `usuarios`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
 
+INSERT INTO usuarios
+    (id, fullname, email, password, admin, createdAt, updatedAt)
+VALUES
+    (1, 'Admin User', 'admin@artico.com.ar', '123456', 1, '2021-07-02 22:39:45', '2021-07-02 22:39:45');
