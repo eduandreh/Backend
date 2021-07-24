@@ -90,10 +90,13 @@ module.exports = {
                 where: {
                     '$cliente.usuario_fullname$': client_id
                 },
-                include: [producto, medioDePago, domicilio, cliente]
+                include: [producto, medioDePago, domicilio, {model: cliente, include: [{model: usuarios, as: "usuario"}] }]
             })
             .then(cliente => res.status(200).send(cliente))
-            .catch(error => res.status(400).send(error))
+            .catch(error => {
+                console.log(error)
+                res.status(400).send(error)
+            })
 
     }
 
