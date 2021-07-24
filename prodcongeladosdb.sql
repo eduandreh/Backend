@@ -137,7 +137,18 @@ CREATE TABLE `usuarios`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
 
+
+
+  --Ejemplos--
+
+--Usuario Administrador--
 INSERT INTO usuarios
     (id, fullname, email, password, admin, createdAt, updatedAt)
 VALUES
     (1, 'Admin User', 'admin@artico.com.ar', '123456', 1, '2021-07-02 22:39:45', '2021-07-02 22:39:45');
+
+    --Productos--
+INSERT INTO `productos` (`id`,`titulo`,`tag`,`precio`,`imageFileName`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'Filet de Merluza','Linea Artico','520','http://res.cloudinary.com/dmnligu6a/image/upload/v1627089745/mfjcbb4ficbgaw9ug7xn.jpg','2021-05-31','2021-05-31');
+INSERT INTO `productos` (`id`,`titulo`,`tag`,`precio`,`imageFileName`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'Pollo','Linea Artico','300','https://res.cloudinary.com/dmnligu6a/image/upload/v1627089825/gxmeowg4ljvabaca0rbc.jpg','2021-05-31','2021-05-31');
+INSERT INTO `productos` (`id`,`titulo`,`tag`,`precio`,`imageFileName`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'Empanadas','Linea Artico 24 unidades','1200','http://res.cloudinary.com/dmnligu6a/image/upload/v1627089902/xuvjarwp6y50xbl4dlov.jpg','2021-05-31','2021-05-31');
+INSERT INTO `productos` (`id`,`titulo`,`tag`,`precio`,`imageFileName`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'Helado de Chocolate','Linea Artico 1 Kilo','600','http://res.cloudinary.com/dmnligu6a/image/upload/v1627090064/c4kefnzfrejpq3efbh9t.jpg','2021-05-31','2021-05-31');

@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const producto = require('../models').producto;
-var UserImgService =require('../services/userImg.service');
 //configurar cloudinary
 var cloudinary = require('cloudinary');
 cloudinary.config({ 
